@@ -167,7 +167,7 @@ class RedBlackTree<K:Comparable, V> {
   }
   
   func minimum(var rootNode:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
-    while rootNode !== sentinel {
+    while rootNode.left !== sentinel {
       rootNode = rootNode.left
     }
     return rootNode
