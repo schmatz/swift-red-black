@@ -49,8 +49,9 @@ public class RedBlackTree<K: Comparable, V> {
     }
   }
   
-  public func findKey(key: K) -> RedBlackTreeNode<K,V> {
-    return findNode(rootNode: root, key: key)
+  public func findKey(key: K) -> RedBlackTreeNode<K,V>? {
+    let foundNode = findNode(rootNode: root, key: key)
+    return foundNode === sentinel ? nil : foundNode
   }
   
   public func minimum(var rootNode: RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
