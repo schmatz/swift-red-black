@@ -13,10 +13,10 @@ public class RedBlackTreeNode<K: Comparable, V> {
   var left:  RedBlackTreeNode<K,V>!
   var parent:  RedBlackTreeNode<K,V>!
   
-  init(sentinel: RedBlackTreeNode<K, V>) {
-    right = sentinel
-    left = sentinel
-    parent = sentinel
+  init(tree: RedBlackTree<K, V>) {
+    right = tree.sentinel
+    left = tree.sentinel
+    parent = tree.sentinel
   }
   
   init() {
@@ -35,8 +35,8 @@ public class RedBlackTree<K: Comparable, V> {
     root = sentinel
   }
   
-  public func insertKey(key: K, data:V) {
-    let newNode = RedBlackTreeNode<K,V>(sentinel:  sentinel)
+  public func insertKey(key: K, data:V?) {
+    let newNode = RedBlackTreeNode<K,V>(tree:  self)
     newNode.key = key
     newNode.data = data
     insertNode(newNode)
