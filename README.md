@@ -10,11 +10,11 @@ Add `redblacktree.swift` to your project.
 
 To create a tree, just initialize it like so
 
-```
+```swift
 let tree = RedBlackTree<K,V>()
 ```
 where `K` is your key type and `V` is the type of whatever data you want to store in each node. Any type `K` can be used as long as it conforms to the protocol `Comparable`, and any type `V` is acceptable. For example, if I wanted to store an array of strings in each node and use floats as keys, I would write
-```
+```swift
 let tree = RedBlackTree<Float,[String]>()
 ```
 
@@ -22,13 +22,13 @@ let tree = RedBlackTree<Float,[String]>()
 To insert a new node into the tree, there are two methods available: `insertKey(key: K, data:V)` and `insertNode(nodeToInsert: RedBlackTreeNode<K,V>)`. 
 
 The first doesn't require the manual construction of a node to insert. For example,
-```
+```swift
 tree.insertKey(7.9, data: ["Hello","Yes","This","Is","Dog])
 ```
 Note that the data parameter can be nil if you don't want the node to store data.
 
 The second method, however, does require that you build a node manually. 
-```
+```swift
 let nodeToInsert = RedBlackTreeNode<Float,[String]>(tree: tree)
 nodeToInsert.key = 8.5
 nodeToInsert.data = nil
@@ -38,7 +38,7 @@ tree.insertNode(nodeToInsert)
 ###Search
 To find a node with a given key, just call the `findKey(key: K)` method.
 
-```
+```swift
 let foundNode = tree.findKey(7.9)
 //foundNode's data is ["Hello","Yes","This","Is","Dog]
 let nonExistentNode = tree.findKey(100)
