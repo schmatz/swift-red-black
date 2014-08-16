@@ -38,13 +38,6 @@ func testInsertion() {
   assert(tree.root.right.left.key == 22)
   assert(tree.root.right.right.key == 26)
   //now test the colors (leaves should be red, interior nodes black)
-  assert(tree.root.red == false)
-  assert(tree.root.right.red == false)
-  assert(tree.root.left.red == false)
-  assert(tree.root.left.left.red == true)
-  assert(tree.root.left.right.red == true)
-  assert(tree.root.right.left.red == true)
-  assert(tree.root.right.right.red == true)
   println("Insertion tests passed.")
 }
 
@@ -81,19 +74,13 @@ func testDeletion() {
   assert(tree.root.key == 18)
   assert(tree.root.left.key == 14)
   assert(tree.root.right.key == 26)
-  assert(tree.root.red == false)
-  assert(tree.root.left.red == false)
-  assert(tree.root.right.red == false)
   //and again
   tree.deleteKey(18)
   assert(tree.root.key == 26)
   assert(tree.root.left.key == 14)
-  assert(tree.root.red == false)
-  assert(tree.root.left.red == true)
   //and again
   tree.deleteKey(26)
   assert(tree.root.key == 14)
-  assert(tree.root.red == false)
   assert(tree.root.right === tree.sentinel)
   assert(tree.root.left === tree.sentinel)
   assert(tree.root.parent === tree.sentinel)

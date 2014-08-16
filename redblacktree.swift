@@ -5,8 +5,8 @@
 //  Copyright (c) 2014 Michael Schmatz. All rights reserved.
 //
 
-class RedBlackTreeNode<K:Comparable, V> {
-  var red:Bool = false
+public class RedBlackTreeNode<K:Comparable, V> {
+  private var red:Bool = false
   var key:K! = nil
   var data:V? = nil
   var right:RedBlackTreeNode<K,V>!
@@ -21,7 +21,7 @@ class RedBlackTreeNode<K:Comparable, V> {
   }
 }
 
-class RedBlackTree<K:Comparable, V> {
+public class RedBlackTree<K:Comparable, V> {
   var root:RedBlackTreeNode<K,V>
   let sentinel:RedBlackTreeNode<K,V>
   
@@ -31,20 +31,24 @@ class RedBlackTree<K:Comparable, V> {
     root = sentinel
   }
   
-  func insertKey(key:K) {
+  public func insertKey(key:K) {
     let newNode = RedBlackTreeNode<K,V>(sentinel: sentinel)
     newNode.key = key
-    insert(newNode)
+    insertNode(newNode)
   }
-  func deleteKey(key:K) {
-    let nodeToDelete = search(root, key: key)
+  
+  public func deleteKey(key:K) {
+    let nodeToDelete = findNode(root, key: key)
     if nodeToDelete !== sentinel {
-      delete(nodeToDelete)
+      deleteNode(nodeToDelete)
     }
-    
+  }
+  
+  public func findKey(key:K) -> RedBlackTreeNode<K,V> {
+    return findNode(root, key: key)
   }
 
-  func insert(nodeToInsert:RedBlackTreeNode<K,V>) {
+  public func insertNode(nodeToInsert:RedBlackTreeNode<K,V>) {
     //println("Inserting node!")
     var y = sentinel
     var x = root
@@ -166,21 +170,21 @@ class RedBlackTree<K:Comparable, V> {
     v.parent = u.parent
   }
   
-  func minimum(var rootNode:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
+  public func minimum(var rootNode:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
     while rootNode.left !== sentinel {
       rootNode = rootNode.left
     }
     return rootNode
   }
   
-  func maximum(var rootNode:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
+  public func maximum(var rootNode:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
     while rootNode.right !== sentinel {
       rootNode = rootNode.right
     }
     return rootNode
   }
   
-  func search(var rootNode:RedBlackTreeNode<K,V>, key:K) -> RedBlackTreeNode<K,V> {
+  public func findNode(var rootNode:RedBlackTreeNode<K,V>, key:K) -> RedBlackTreeNode<K,V> {
     while rootNode !== sentinel && key != rootNode.key {
       if key < rootNode.key {
         rootNode = rootNode.left
@@ -191,11 +195,7 @@ class RedBlackTree<K:Comparable, V> {
     return rootNode
   }
   
-  func find(key:K) -> RedBlackTreeNode<K,V> {
-    return search(root, key: key)
-  }
-  
-  func successor(var node:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
+  public func successorOfNode(var node:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
     if node.right !== sentinel {
       return minimum(node.right)
     }
@@ -207,7 +207,7 @@ class RedBlackTree<K:Comparable, V> {
     return successor
   }
   
-  func predecessor(var node:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
+  public func predecessorOfNode(var node:RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V> {
     if node.left !== sentinel {
       return minimum(node.left)
     }
@@ -219,7 +219,7 @@ class RedBlackTree<K:Comparable, V> {
     return successor
   }
   
-  private func delete(z:RedBlackTreeNode<K,V>) {
+  public func deleteNode(z:RedBlackTreeNode<K,V>) {
     var y = z
     var originallyRed = y.red
     var x:RedBlackTreeNode<K,V>!
