@@ -64,7 +64,7 @@ All of the other methods are private and have to do with rotations and tree repa
 
 ###Notes
 
-The algorithms used to implement this tree were taken straight out of [CLRS](http://en.wikipedia.org/wiki/Introduction_to_Algorithms). I haven't profiled this implementation, but I will in the future if performance becomes a problem; this tree is slow compared to ones implemented in C/C++, with 10,000 insertions taking ~20ms, 10,000 finds taking ~26ms, and 10,000 deletions taking ~20ms. I assume that this will only get better with future versions of the compiler. 
+The algorithms used to implement this tree were taken straight out of [CLRS](http://en.wikipedia.org/wiki/Introduction_to_Algorithms). This implementation is slow compared to ones implemented in C/C++, with 10,000 insertions taking ~20ms, 10,000 finds taking ~26ms, and 10,000 deletions taking ~20ms. I did a quick profile, and it shows the bulk of the time is spent dealing with unwrapping implicitly unwrapped optionals. I assume that this will only get better with future versions of the compiler. 
 
 ###License
 
