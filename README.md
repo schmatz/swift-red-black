@@ -23,7 +23,7 @@ To insert a new node into the tree, there are two methods available: `insertKey(
 
 The first doesn't require the manual construction of a node to insert. For example,
 ```swift
-tree.insertKey(7.9, data: ["Hello","Yes","This","Is","Dog])
+tree.insertKey(7.9, data: ["Hello","Yes","This","Is","Dog"])
 ```
 Note that the data parameter can be nil if you don't want the node to store data.
 
@@ -40,7 +40,7 @@ To find a node with a given key, just call the `findKey(key: K)` method.
 
 ```swift
 let foundNode = tree.findKey(7.9)
-//foundNode's data is ["Hello","Yes","This","Is","Dog]
+//foundNode's data is ["Hello","Yes","This","Is","Dog"]
 let nonExistentNode = tree.findKey(100)
 // nonExistentNode's value is nil
 ```
