@@ -46,6 +46,47 @@ let nonExistentNode = tree.findKey(100)
 ```
 Note, if there are duplicates in the tree, there is no way to return them all. I'll probably add this if I need it, but until then, you can extend the data structure to traverse the *right* subtree of your node which you suspect contains duplicates to see if it does.
 
-This repository contains a red-black tree implemented in Swift. The algorithms were taken straight out of [CLRS](http://en.wikipedia.org/wiki/Introduction_to_Algorithms). I haven't optimized it or written proper tests and some parts are still buggy (I plan to improve this library in the near future.) It's slow compared to C/C++, with 10,000 insertions taking ~20ms, 10,000 finds taking ~26ms, and 10,000 deletions taking ~20ms. I assume that this will only get better with future versions of the compiler.
+###Deletion
+Like insertion, there are two functions to handle deletion, `deleteKey(key: K)` and `deleteNode(z: RedBlackTreeNode<K,V>)`. Again, if there are duplicates in the tree, it will only remove one at a time.
 
-With that said, it takes full advantage of Swift's generics, so as long as keys conform to the protocol `Comparable`, they can be used.
+###Other methods
+Some other methods are 
+* `minimum(var rootNode: RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V>`
+  * Find the minimum node of the subtree rooted at `rootNode`
+* `func maximum(var rootNode: RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V>`
+  * Find the maximum node of the subtree rooted at `rootNode`
+* `successorOfNode(var node: RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V>`
+  * Find the node after `node` in an in-order traversal
+* `func predecessorOfNode(var node: RedBlackTreeNode<K,V>) -> RedBlackTreeNode<K,V>`
+  * Find the node before `node` in an in-order traversal
+
+All of the other methods are private and have to do with rotations and tree repair.
+
+###Notes
+
+The algorithms used to implement this tree were taken straight out of [CLRS](http://en.wikipedia.org/wiki/Introduction_to_Algorithms). I haven't profiled this implementation, but I will in the future if performance becomes a problem; this tree is slow compared to ones implemented in C/C++, with 10,000 insertions taking ~20ms, 10,000 finds taking ~26ms, and 10,000 deletions taking ~20ms. I assume that this will only get better with future versions of the compiler. 
+
+###License
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Michael Schmatz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
