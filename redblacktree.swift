@@ -8,7 +8,7 @@
 public class RedBlackTreeNode<K: Comparable, V> {
   private var red: Bool = false
   public var key: K! = nil
-  public var d  ata:  V? = nil
+  public var data:  V? = nil
   var right:  RedBlackTreeNode<K,V>!
   var left:  RedBlackTreeNode<K,V>!
   var parent:  RedBlackTreeNode<K,V>!
@@ -35,9 +35,10 @@ public class RedBlackTree<K: Comparable, V> {
     root = sentinel
   }
   
-  public func insertKey(key: K) {
+  public func insertKey(key: K, data:V) {
     let newNode = RedBlackTreeNode<K,V>(sentinel:  sentinel)
     newNode.key = key
+    newNode.data = data
     insertNode(newNode)
   }
   
