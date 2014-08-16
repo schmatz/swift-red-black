@@ -36,7 +36,7 @@ public class RedBlackTree<K: Comparable, V> {
   }
   
   public func insertKey(key: K, data:V?) {
-    let newNode = RedBlackTreeNode<K,V>(tree:  self)
+    let newNode = RedBlackTreeNode<K,V>(tree: self)
     newNode.key = key
     newNode.data = data
     insertNode(newNode)
