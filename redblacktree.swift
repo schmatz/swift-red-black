@@ -38,7 +38,7 @@ class RedBlackTree<K:Comparable, V> {
   }
   func deleteKey(key:K) {
     let nodeToDelete = search(root, key: key)
-    if nodeToDelete != nil {
+    if nodeToDelete !== sentinel {
       delete(nodeToDelete)
     }
     
@@ -246,7 +246,7 @@ class RedBlackTree<K:Comparable, V> {
       y.red = z.red
     }
     if originallyRed == false {
-      
+      deletionFixup(x)
     }
   }
   
