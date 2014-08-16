@@ -8,7 +8,7 @@ Add `redblacktree.swift` to your project.
 
 ###Creating a tree
 
-To create a tree, just initialize it like so
+To create a tree, initialize it like so
 
 ```swift
 let tree = RedBlackTree<K,V>()
@@ -36,7 +36,7 @@ tree.insertNode(nodeToInsert)
 ```
 
 ###Search
-To find a node with a given key, just call the `findKey(key: K)` method.
+To find a node with a given key, call the `findKey(key: K)` method.
 
 ```swift
 let foundNode = tree.findKey(7.9)
